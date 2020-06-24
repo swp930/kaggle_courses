@@ -1,0 +1,33 @@
+First step in machine learning project is to familiarize yourself with the data.
+You can use the Pandas library for this. 
+This library is the primary tool data scientists use for exploring and manipulating data.
+
+Can import with 
+    import pandas as pd
+
+Most important part of the Pandas library is the DataFrame. 
+DataFrame holds the type of data you might think of as a table.
+Similar to a sheet in Excel, or a table in a SQL database.
+
+Code snippet to read csv data and store as Pandas dataframe
+# save filepath to variable for easier access
+melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv'
+# read the data and store data in DataFrame titled melbourne_data
+melbourne_data = pd.read_csv(melbourne_file_path) 
+# print a summary of the data in Melbourne data
+melbourne_data.describe()
+
+Interpreting Data Description 
+
+After calling melbourne_data.describe(), 8 numbers show up.
+
+count:
+    How many rows have non-missing values
+
+mean: average
+std: Standard deviation, shows how numerically spread out values are
+min: minimum value 
+25%: Value that is greater than 25% of the data
+50%: Value that is greater than 50% of the data
+75%: Value that is greater than 75% of the data
+max: maximum value

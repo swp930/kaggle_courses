@@ -1,0 +1,37 @@
+Course considers the following scenario:
+Your cousin has made millions of dollars speculating on real estate. 
+He's offered to become business partners with you because of your interest in data science. 
+He'll supply the money, and you'll supply models that predict how much various houses are worth.
+
+You ask your cousin how he's predicted real estate values in the past. 
+and he says it is just intuition. 
+But more questioning reveals that he's identified price patterns from houses he has seen in the past, and he uses those patterns to make predictions for new houses he is considering.
+
+Start with model: Sample Decision Tree
+
+Sample Decision Tree:
+
+Does house have more than 2 bedrooms
+-> No
+    Predicted Price: $178000
+-> Yes
+    Predicted Price: $188000
+
+It divides houses into only two categories. 
+The predicted price for any house under consideration is the historical average price of houses in the same category.
+
+Fitting or training the model:
+    Capturing patterns from data
+
+Training data:
+    Data used to fit the data
+
+Predicting:
+    Can use model to predict prices of houses you haven't seen before
+
+Can capture more factors using a tree that has more "splits". 
+These are called "deeper" trees. 
+
+Point at the bottom of the tree is called a leaf.
+
+

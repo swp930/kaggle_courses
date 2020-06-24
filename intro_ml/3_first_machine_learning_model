@@ -1,0 +1,14 @@
+Selecting Data for Modeling 
+
+Dataset had too many variables to wrap your head around or print
+How can you pare down data to something you can understand?
+
+Will use intuition to choose variables for now.
+
+Have to examine columns of pd Dataframe
+
+import pandas as pd
+
+melbourne_file_path = '../input/melbourne-housing-snapshot/melb_data.csv'
+melbourne_data = pd.read_csv(melbourne_file_path) 
+melbourne_data.columns
