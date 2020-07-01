@@ -1,0 +1,43 @@
+Measuring model quality is the key to iteratively improving your models.
+
+Relative measure of model quality is predictive accurac. 
+
+Mean Absolute Error (MAE)
+    Prediction error for each house is 
+        error=actual-predicted
+    We take the absolute value of each error, then take average of those absolute errors.
+
+In plain English, it can be said as on average, our predictions are off by about X.
+
+First we need a model we can use the DecisionTreeRegressor model. 
+
+Then can calulate mean absolute error
+from sklearn.metrics import mean_absolute_error
+
+predicted_home_prices = melbourne_model.predict(X)
+mean_absolute_error(y, predicted_home_prices)
+
+We used a single "sample" of houses for both building the model and evaluating it. 
+This is bad because we may not be testing how well that pattern works on new data.
+
+Have to exclude some data to test the model's accuracy.
+This data is called validation data.
+
+The scikit-learn library has a function train_test_split to break up the data into two pieces.
+We'll use some of that dataa as training data to fit the model, and other as validation data to calculate mean_absolute_error
+
+from sklearn.model_selection import train_test_split
+
+# split data into training and validation data, for both features and target
+# The split is based on a random number generator. Supplying a numeric value to
+# the random_state argument guarantees we get the same split every time we
+# run this script.
+train_X, val_X, train_y, val_y = train_test_split(X, y, random_state = 0)
+# Define model
+melbourne_model = DecisionTreeRegressor()
+# Fit model
+melbourne_model.fit(train_X, train_y)
+
+# get predicted prices on validation data
+val_predictions = melbourne_model.predict(val_X)
+print(mean_absolute_error(val_y, val_predictions))

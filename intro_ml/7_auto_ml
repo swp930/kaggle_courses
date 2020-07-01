@@ -1,0 +1,13 @@
+7 steps of machine learning
+
+Step 1: Gather the data 
+Step 2: Prepare the data - Deal with missing values and categorical data
+Step 3: Select a model
+Step 4: Train the model - Fit decision trees and random forests to patterns in training data 
+Step 5: Evaluate the model - Use validation set to assess how well a trained model performs on unseen data
+Step 6: Tune parameters - Tune params to get better performance from XGBoost models
+Step 7: Get predictions - Generate predictions with a trained model
+
+Automated machine learning (AutoML)
+Google Cloud AutoML Tables takes care of steps 2 to 7
+This is a paid service

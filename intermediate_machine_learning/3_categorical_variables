@@ -1,0 +1,24 @@
+A categorical variable takes only a limited number of values.
+
+- Consider a survey that asks how often you eat breakfaast
+    Categories would be "Never", "Rarely", "Most days", or "Every day"
+
+3 approaches 
+    1) Drop Categorical Variables
+        Easiest approach when dealing with categorical variables
+    2) Label Encoding 
+        Assigns each unique value to a different integer. 
+        There ends up being a ranking in the categories. 
+        Categorical variables with ranking are known as ordinal variables. 
+        For tree-based models, label encoding works well with ordinal variables.
+    3) One-Hot Encoding 
+        One-hot encoding creates new columns indicating the presence of 
+        each possible value in the original data. 
+        Categorical variables without an intrinsic ranking are known as nominal variables.
+    
+# Get list of categorical variables
+s = (X_train.dtypes == 'object')
+object_cols = list(s[s].index)
+
+print("Categorical variables:")
+print(object_cols)
