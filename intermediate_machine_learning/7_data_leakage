@@ -1,0 +1,15 @@
+Data leakage happens when your training data contains information about the target, but similar data will not be available when the model is used for prediction
+Leads to higher performance on the training set, but will perform poorly on prediction
+
+Leakage causes a model to look accurate until you start making decisions with the model, and then the model becomes very innaccurate
+Two main types of leakage: target leakage and train-test contamination
+
+Target leakage 
+When predictors include data that will not be available at the time you make predictions
+Target leakage in terms of timing or chronological order 
+
+To prevent this type of data leakage, any variable updated after the target value is realized should be excluded
+
+Train-Test Contamination 
+When validation data affects the preprocessing behavior 
+Model may get good validation scores, giving you great confidence but performs poorly when you deploy it

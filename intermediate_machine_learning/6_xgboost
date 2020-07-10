@@ -1,0 +1,67 @@
+Gradient boosting
+    Dominates many Kaggle competitons and achieves state-of-the-art results on a variety of datasets.
+
+Random forest method is an ensemble method
+    Combines the prediction of many decision trees
+
+Gradient Boosting 
+    Method that goes through cycles to iteratively add models into an ensemble
+    Initializes the ensemble with a single model, whose predictions can be pretty naive.
+
+    Then start the cycle:
+        - First use the current ensemble to generate predictions for each observation in the dataset
+            To make a prediction, we add predictions from all models in the ensemble 
+        - Predictions used to calculate a loss function (like mean squared error)
+        - Then we use loss function to fit a new model that will be added to the ensemble 
+            We determine model parameters so that adding this new model to the ensemble will reduce the loss.
+            Will use gradient descent on the loss function to determine on the loss function to determine the parameters in this new model. 
+            Finally we add the new model to ensemble
+            Then repeat.
+
+XGBoost 
+    Extreme gradient boosting, implementation of gradient boosting with several additional features focused on performance and speed 
+
+from xgboost import XGBRegressor
+
+my_model = XGBRegressor()
+my_model.fit(X_train, y_train)
+
+from sklearn.metrics import mean_absolute_error
+
+predictions = my_model.predict(X_valid)
+print("Mean Absolute Error: " + str(mean_absolute_error(predictions, y_valid)))
+
+Parameter Tuning 
+    n_estimators
+        How many times to go through the modeling cycle described above
+        Equal to the number of models that we include 
+            Too low a value causes underfitting 
+            Too high a value causes overfitting 
+    early_stopping_rounds
+        Offers a way to automatically find the ideal value for n_estimators 
+        Early stopping causes the model to stop iterating when the validation, even if we aren't at the hard stop for n_estimators 
+        Smart to set a high value for n_estimators and then use early_stopping_rounds to find the optimal time to stop iterating 
+    
+        early_stopping_rounds=5 means stop after 5 rounds of deteriorating validation scores
+    
+    learning_rate
+        Instead of getting predictions by simply adding up the predictions from each component model, we can multiply the predictions from each model by a small number (known as the learning rate) before adding them in
+        Each tree we add to the ensemble helps us less. 
+        So we can set a higher value for n_estimators without overfitting 
+        If we use early stopping, appropriate number of trees will be determined automatically
+        A small learrning rate and large number of estimators will yield more accurate XGBoost models
+
+my_model = XGBRegressor(n_estimators=1000, learning_rate=0.05)
+my_model.fit(X_train, y_train, 
+             early_stopping_rounds=5, 
+             eval_set=[(X_valid, y_valid)], 
+             verbose=False)
+
+    n_jobs 
+        Number of cores on your machine
+        Won't help on smaller datasets
+my_model = XGBRegressor(n_estimators=1000, learning_rate=0.05, n_jobs=4)
+my_model.fit(X_train, y_train, 
+             early_stopping_rounds=5, 
+             eval_set=[(X_valid, y_valid)], 
+             verbose=False)

@@ -1,0 +1,21 @@
+Scatterplot code 
+
+sns.scatterplot(x=insurance_data['bmi'], y=insurance_data['charges'])
+
+
+Scatterplots with regression lines
+sns.regplot(x=insurance_data['bmi'], y=insurance_data['charges'])
+
+
+Color-coded scatter plots 
+sns.scatterplot(x=insurance_data['bmi'], y=insurance_data['charges'], hue=insurance_data['smoker'])
+
+
+Color-coded scatter plots with regression lines 
+sns.lmplot(x="bmi", y="charges", hue="smoker", data=insurance_data)
+
+
+
+Categorical scatter plot
+sns.swarmplot(x=insurance_data['smoker'],
+              y=insurance_data['charges'])

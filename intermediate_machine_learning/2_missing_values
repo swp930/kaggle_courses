@@ -61,3 +61,5 @@ imputed_X_valid_plus.columns = X_valid_plus.columns
 print("MAE from Approach 3 (An Extension to Imputation):")
 print(score_dataset(imputed_X_train_plus, imputed_X_valid_plus, y_train, y_valid))
 q
+
+my_imputer = SimpleImputer(strategy='most_frequent')
